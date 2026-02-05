@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(to bottom right, #ff4e78, #ff9a9e);
+    color: white;
+    overflow: hidden;
+}
+
+/* MAIN SCREEN */
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+}
+
+/* TEXT */
+h1 { font-size: 3em; }
+p { font-size: 1.8em; }
+
+/* BUTTONS */
+button {
+    padding: 12px 30px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+#yes {
+    background: white;
+    color: #ff4e78;
+    margin: 10px;
+}
+
+#no {
+    background: #ffb3c1;
+    color: #a0002d;
+    position: absolute;
+    top: 60%;
+    left: 60%;
+}
+
+/* HIDDEN MESSAGE */
+#hiddenMessage {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    max-width: 650px;
+    margin-top: 30px;
+}
+
+#hiddenMessage p {
+    margin: 10px 0;
+    color: #5a002b;
+}
+
+#yayText {
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+/* IMAGE */
+#coupleImage {
+    display: none;
+    width: 240px;
+    max-width: 80%;
+    border-radius: 18px;
+    margin: 20px 0;
+    box-shadow: 0 0 20px rgba(255,255,255,0.6);
+}
+
+/* CONTINUE BUTTON */
+#hiddenMessage button {
+    margin-top: 20px;
+    background: white;
+    color: #ff4e78;
+}
+
+/* FINAL SCREEN */
+.finalScreen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(to bottom right, #ff0844, #ffb199);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    z-index: 10;
+}
+
+.finalScreen h1 {
+    font-size: 3.5em;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px white; }
+    to { text-shadow: 0 0 25px pink; }
+}
+
+/* ZOOM FADE */
+.zoomFade {
+    animation: zoomFade 0.8s ease forwards;
+}
+
+@keyframes zoomFade {
+    to { transform: scale(1.05); opacity: 0; }
+}
+
+/* TYPEWRITER */
+.typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid white;
+    width: 0;
+    animation: typing 2.5s steps(25,end) forwards, blink 0.7s infinite;
+}
+
+@keyframes typing { to { width: 100%; } }
+@keyframes blink { 50% { border-color: transparent; } }
+
+/* CONFETTI */
+.confetti {
+    position: fixed;
+    font-size: 22px;
+    animation: confettiFall 2.8s forwards;
+}
+
+@keyframes confettiFall {
+    to {
+        transform: translateY(450px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* HEART FLOAT */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 22px;
+    animation: floatUp 6s linear infinite;
+}
+.loveBtn {
+    background: linear-gradient(135deg, #ff0844, #ff6f91);
+    color: rgb(216, 135, 81);
+    padding: 14px 34px;
+    font-size: 1.3em;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.6);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.loveBtn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px rgba(255,255,255,0.9);
+}
+.yesBtn{
+    background: linear-gradient(135deg, #ff0844, #ff6f91);
+    color: rgb(216, 135, 81);
+    padding: 14px 34px;
+    font-size: 1.3em;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.6);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.yesBtn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px rgba(255,255,255,0.9);
+}
+
+
+
+@keyframes floatUp {
+    to { transform: translateY(-110vh); opacity: 0; }
+}
+
+/* RING */
+.ring {
+    position: fixed;
+    font-size: 55px;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: ringUp 2s ease forwards;
+}
+
+@keyframes ringUp {
+    to {
+        bottom: 45%;
+        opacity: 1;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+    <source src="inspiring-emotional-uplifting-piano-112623.mp3" type="audio/mpeg">
+</audio>
+
+<!-- MAIN SCREEN -->
+<div class="container" id="mainScreen">
+    <h1>Hey My Love ❤️</h1>
+    <p>Will you be my forever? 💍</p>
+
+    <button id="yes">YES, ALWAYS 💍❤️</button>
+    <button id="no">NO 🙈</button>
+
+    <div id="hiddenMessage">
+        <p id="yayText">SWEETHEART 🥹💖</p>
+        <p>
+            From the moment you came into my life,<br>
+            everything changed for the better. You are my favorite person, my friend and my everthing  ❤️
+        </p>
+        <p>
+            I don’t promise perfection,<br>
+            but I promise love, care, and forever 💍
+        </p>
+
+        <img id="coupleImage" src="image.png">
+        <p id="threeYears" style="display:none; font-size:1.3em; color:#5a002b; margin-top:15px;">
+    Three years ago, we started a journey together ❤️<br>
+    Three years of memories, laughter, fights, growth, and endless love.<br>
+    Every day with you has been my favorite chapter,<br>
+    You are my everthing, even I cant explain my love for you in my words<br>
+    and I can’t wait to write the rest of my life with you 💍💖
+</p>
+
+<button class="loveBtn" onclick="showThreeYears()">Continue 💍</button>
+<script>
+           function showThreeYears(){
+    document.getElementById("threeYears").style.display = "block";
+
+    setTimeout(() => {
+        finalLove();
+    }, 1000000); // waits so he can read it 💕
+}
+</script>
+
+
+
+        <button class="yesBtn" onclick ="finalLove()">Say YES forever 💍</button>
+        
+    </div>
+</div>
+
+<!-- FINAL SCREEN -->
+<div class="finalScreen" id="finalScreen">
+    <h1>Will you marry me? 💍❤️</h1>
+    <p>I choose you. Today. Tomorrow. Forever 💫</p>
+</div>
+
+<script>
+const yesBtn = document.getElementById("yes");
+const noBtn = document.getElementById("no");
+const hiddenMessage = document.getElementById("hiddenMessage");
+const coupleImage = document.getElementById("coupleImage");
+const mainScreen = document.getElementById("mainScreen");
+const finalScreen = document.getElementById("finalScreen");
+const music = document.getElementById("bgMusic");
+
+/* NO BUTTON MESSAGES */
+const noMessages = [
+  "Wait… this is important 🥺",
+  "Please think again 💔",
+  "My heart is shaking 😢",
+  "I promise to love you forever ❤️",
+  "Okay… I’ll wait for you 💞",
+  "You’re my forever 🥹",
+  "You cant choose this option"
+];
+let noCount = 0;
+
+/* YES CLICK */
+yesBtn.addEventListener("click", () => {
+    alert("Yayyy 😍 You just made my whole world brighter ❤️");
+    
+
+    mainScreen.classList.add("zoomFade");
+    music.play().catch(()=>{});
+
+    for(let i=0;i<35;i++){
+        const c=document.createElement("div");
+        c.className="confetti";
+        c.innerHTML="❤️";
+        c.style.left=Math.random()*window.innerWidth+"px";
+        c.style.top="0px";
+        document.body.appendChild(c);
+        setTimeout(()=>c.remove(),2800);
+    }
+
+    setTimeout(() => {
+        const ring = document.createElement("div");
+        ring.className = "ring";
+        ring.innerHTML = "💍";
+        document.body.appendChild(ring);
+
+        setTimeout(() => {
+            alert("Will you walk this life with me? 💖");
+        }, 1200);
+    }, 800);
+
+    setTimeout(()=>{
+        yesBtn.style.display="none";
+        noBtn.style.display="none";
+        hiddenMessage.style.display="flex";
+        coupleImage.style.display="block";
+        document.getElementById("yayText").classList.add("typewriter");
+        mainScreen.classList.remove("zoomFade");
+        document.body.style.overflowY="auto";
+    },700);
+});
+
+/* NO BUTTON RUN */
+noBtn.addEventListener("mouseenter",()=>{
+    const x=Math.random()*(window.innerWidth-120);
+    const y=Math.random()*(window.innerHeight-120);
+    noBtn.style.left=x+"px";
+    noBtn.style.top=y+"px";
+
+    alert(noMessages[noCount % noMessages.length]);
+    noCount++;
+});
+
+/* FINAL SCREEN */
+function finalLove(){
+    mainScreen.style.display="none";
+    finalScreen.style.display="flex";
+    document.body.style.overflow="hidden";
+
+    for(let i=0;i<50;i++){
+        const h=document.createElement("div");
+        h.className="confetti";
+        h.innerHTML="💖";
+        h.style.left=Math.random()*window.innerWidth+"px";
+        h.style.top="0px";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),3000);
+    }
+}
+
+/* FLOATING HEARTS */
+setInterval(()=>{
+    const h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="❤️";
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+},300);
+</script>
+
+</body>
+</html>
